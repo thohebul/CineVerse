@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="CineVerse - Discover trending, popular and top rated movies.">
+    <title>CineVerse - Movie Discovery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">🎬</span>
+                <span>Cine<span>Verse</span></span>
+            </a>
+
+            <nav class="navbar" id="navbar">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#movies" class="nav-link">Movies</a>
+                <a href="#trending" class="nav-link">Trending</a>
+                <a href="#watchlist" class="nav-link">
+                    Watchlist <span class="watch-count">0</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <button class="icon-btn" id="themeBtn" title="Change theme">
+                    🌙
+                </button>
+
+                <button class="account-btn" id="accountBtn">
+                    <span class="account-icon">👤</span>
+                    <span id="accountText">Account</span>
+                </button>
+
+                <button class="menu-btn" id="menuBtn">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    🎬 THE ULTIMATE MOVIE DISCOVERY
+                </div>
+
+                <h1>
+                    Discover Your Next
+                    <span>Favorite Movie</span>
+                </h1>
+
+                <p>
+                    Explore thousands of movies, discover trending titles,
+                    watch trailers and create your own personal watchlist.
+                </p>
+
+                <div class="hero-search">
+
+                    <input
+                        type="text"
+                        id="heroSearchInput"
+                        placeholder="Search movies... e.g. Interstellar"
+                    >
+
+                    <button id="heroSearchBtn">
+                        🔍 Search
+                    </button>
+
+                </div>
+
+                <button class="explore-btn" id="exploreBtn">
+                    Explore Movies
+                    <span>→</span>
+                </button>
+
+            </div>
+
+            <div class="hero-scroll">
+                <span>Scroll to explore</span>
+                <span class="scroll-arrow">↓</span>
+            </div>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+        <section class="search-section" id="movies">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">MOVIE LIBRARY</span>
+                        <h2>Explore Movies</h2>
+                    </div>
+
+                    <p id="resultText">
+                        Discover movies you'll love
+                    </p>
+
+                </div>
+
+                <div class="main-search">
+
+                    <div class="search-box">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search for a movie..."
+                        >
+
+                        <button id="searchBtn">
+                            Search
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Genres -->
+                <div class="genre-container">
+
+                    <button class="genre-btn active" data-genre="all">
+                        All
+                    </button>
+
+                    <button class="genre-btn" data-genre="28">
+                        Action
+                    </button>
+
+                    <button class="genre-btn" data-genre="35">
+                        Comedy
+                    </button>
+
+                    <button class="genre-btn" data-genre="27">
+                        Horror
+                    </button>
+
+                    <button class="genre-btn" data-genre="10749">
+                        Romance
+                    </button>
+
+                    <button class="genre-btn" data-genre="878">
+                        Sci-Fi
+                    </button>
+
+                    <button class="genre-btn" data-genre="16">
+                        Animation
+                    </button>
+
+                    <button class="genre-btn" data-genre="53">
+                        Thriller
+                    </button>
+
+                    <button class="genre-btn" data-genre="12">
+                        Adventure
+                    </button>
+
+                </div>
+
+                <div class="movie-grid" id="searchResults"></div>
+
+                <div class="load-more-wrapper">
+                    <button class="load-more-btn" id="loadMoreBtn">
+                        Load More
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRENDING ================= -->
+        <section class="movie-section" id="trending">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">WHAT'S HOT</span>
+                        <h2>Trending Now</h2>
+                    </div>
+
+                    <button class="view-all-btn" id="trendingViewBtn">
+                        View All →
+                    </button>
+
+                </div>
+
+                <div class="movie-grid" id="trendingMovies"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOP RATED ================= -->
+        <section class="movie-section alternate">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">CRITICALLY ACCLAIMED</span>
+                        <h2>Top Rated</h2>
+                    </div>
+
+                    <button class="view-all-btn" id="ratedViewBtn">
+                        View All →
+                    </button>
+
+                </div>
+
+                <div class="movie-grid" id="topRatedMovies"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= POPULAR ================= -->
+        <section class="movie-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">FAN FAVORITES</span>
+                        <h2>Popular Movies</h2>
+                    </div>
+
+                </div>
+
+                <div class="movie-grid" id="popularMovies"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WATCHLIST ================= -->
+        <section class="watchlist-section" id="watchlist">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">YOUR COLLECTION</span>
+                        <h2>My Watchlist ❤️</h2>
+                    </div>
+
+                    <span class="watchlist-total">
+                        <span id="watchlistTotal">0</span> Movies
+                    </span>
+
+                </div>
+
+                <div class="movie-grid" id="watchlistMovies"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+        <section class="cta-section">
+
+            <div class="cta-content">
+
+                <span class="cta-icon">🎬</span>
+
+                <h2>Your Next Movie<br>Is Waiting</h2>
+
+                <p>
+                    Search thousands of movies and find something
+                    amazing to watch tonight.
+                </p>
+
+                <button id="ctaSearchBtn">
+                    Start Exploring →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+                    <span class="logo-icon">🎬</span>
+                    <span>Cine<span>Verse</span></span>
+                </a>
+
+                <p>
+                    Your gateway to the world of cinema.
+                    Discover, explore and save your favorite movies.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <div>
+                    <h4>Explore</h4>
+                    <a href="#home">Home</a>
+                    <a href="#movies">Movies</a>
+                    <a href="#trending">Trending</a>
+                    <a href="#watchlist">Watchlist</a>
+                </div>
+
+                <div>
+                    <h4>Account</h4>
+                    <a href="#" id="footerLogin">Login</a>
+                    <a href="#" id="footerSignup">Sign Up</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 CineVerse. Built with HTML, CSS & JavaScript.
+            </p>
+
+            <p>
+                Movie data provided by
+                <a
+                    href="https://www.themoviedb.org/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    TMDB
+                </a>
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= MOVIE DETAILS MODAL ================= -->
+    <div class="modal-overlay" id="movieModal">
+
+        <div class="movie-modal">
+
+            <button class="modal-close" id="movieModalClose">
+                ×
+            </button>
+
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+
+            <div class="modal-content">
+
+                <div class="modal-poster-wrapper">
+                    <img id="modalPoster" src="" alt="Movie poster">
+                </div>
+
+                <div class="modal-info">
+
+                    <span class="modal-label">MOVIE DETAILS</span>
+
+                    <h2 id="modalTitle">
+                        Movie Title
+                    </h2>
+
+                    <div class="modal-meta">
+
+                        <span id="modalRating">
+                            ⭐ 0.0
+                        </span>
+
+                        <span id="modalYear">
+                            📅 2026
+                        </span>
+
+                        <span id="modalRuntime">
+                            ⏱ 0m
+                        </span>
+
+                    </div>
+
+                    <div class="modal-genres" id="modalGenres"></div>
+
+                    <p class="modal-overview" id="modalOverview">
+                        Movie description.
+                    </p>
+
+                    <div class="modal-buttons">
+
+                        <button class="trailer-btn" id="trailerBtn">
+                            ▶ Watch Trailer
+                        </button>
+
+                        <button class="watchlist-btn" id="modalWatchlistBtn">
+                            ❤️ Add to Watchlist
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TRAILER MODAL ================= -->
+    <div class="modal-overlay" id="trailerModal">
+
+        <div class="trailer-modal">
+
+            <button class="modal-close" id="trailerClose">
+                ×
+            </button>
+
+            <div class="trailer-container" id="trailerContainer">
+
+                <div class="trailer-loading">
+                    Loading trailer...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= AUTH MODAL ================= -->
+    <div class="modal-overlay" id="authModal">
+
+        <div class="auth-modal">
+
+            <button class="modal-close" id="authClose">
+                ×
+            </button>
+
+            <div class="auth-logo">
+                🎬
+            </div>
+
+            <h2 id="authTitle">
+                Welcome Back
+            </h2>
+
+            <p id="authSubtitle">
+                Login to continue your CineVerse journey.
+            </p>
+
+
+            <!-- Login -->
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+                <button class="auth-submit" type="submit">
+                    Login
+                </button>
+
+                <p class="auth-switch">
+                    Don't have an account?
+                    <button type="button" id="showSignup">
+                        Sign Up
+                    </button>
+                </p>
+
+            </form>
+
+
+            <!-- Signup -->
+            <form id="signupForm" class="hidden">
+
+                <div class="input-group">
+
+                    <label>Name</label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="Your email"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+                <button class="auth-submit" type="submit">
+                    Create Account
+                </button>
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <button type="button" id="showLogin">
+                        Login
+                    </button>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACCOUNT DROPDOWN ================= -->
+    <div class="account-dropdown" id="accountDropdown">
+
+        <div class="dropdown-user">
+
+            <div class="dropdown-avatar">
+                👤
+            </div>
+
+            <div>
+                <strong id="dropdownName">
+                    Guest
+                </strong>
+
+                <small id="dropdownEmail">
+                    Not logged in
+                </small>
+            </div>
+
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <button id="dropdownWatchlist">
+            ❤️ My Watchlist
+        </button>
+
+        <button id="dropdownLogout" class="logout-btn">
+            🚪 Logout
+        </button>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+    <div class="toast" id="toast">
+
+        <span id="toastIcon">✓</span>
+
+        <span id="toastMessage">
+            Success
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
